@@ -6,7 +6,9 @@ const DcScreen = () => {
     <div className='container-fluid mt-2'>
       <h2>DC Heroes</h2>
       <hr />
-      <HeroesList publisher='DC Comics' />
+      <div className='row justify-content-around'>
+        <HeroesList publisher='DC Comics' />
+      </div>
     </div>
   );
 };
