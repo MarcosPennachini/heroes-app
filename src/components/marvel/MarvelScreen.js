@@ -6,7 +6,9 @@ const MarvelScreen = () => {
     <div className='container-fluid mt-2'>
       <h2>Marvel Heroes</h2>
       <hr />
-      <HeroesList publisher='Marvel Comics' />
+      <div className='row justify-content-around'>
+        <HeroesList publisher='Marvel Comics' />
+      </div>
     </div>
   );
 };
