@@ -27,7 +27,11 @@ export const Navbar = () => {
           >
             DC
           </NavLink>
+        </div>
+      </div>
 
+      <div className='navbar-collapse collapse w-100 order-3 dual-collapse2 justify-content-end'>
+        <ul className='navbar-nav'>
           <NavLink
             activeClassName='active'
             className='nav-item nav-link'
@@ -36,7 +40,7 @@ export const Navbar = () => {
           >
             Logout
           </NavLink>
-        </div>
+        </ul>
       </div>
     </nav>
   );
