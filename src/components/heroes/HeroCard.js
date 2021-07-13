@@ -10,7 +10,10 @@ const HeroCard = ({
   characters,
 }) => {
   return (
-    <div className='card mt-3' style={{ maxWidth: '250px', padding: '0px' }}>
+    <div
+      className='card mt-3 animate__animated animate__fadeIn'
+      style={{ maxWidth: '200px', padding: '0px' }}
+    >
       <img
         src={`./assets/heroes/${id}.jpg`}
         className='card-img-top'
@@ -18,8 +21,13 @@ const HeroCard = ({
       />
       <div className='card-body'>
         <h5 className='card-title'>{superhero}</h5>
-        <p className='card-text'>{alter_ego}</p>
-        <Link href='#' to={`./hero/${id}`} className='btn btn-outline-primary'>
+
+        {/* <p className='card-text'>{alter_ego}</p> */}
+        <Link
+          href='#'
+          to={`./hero/${id}`}
+          // className='btn btn-outline-primary btn-sm'
+        >
           See more...
         </Link>
       </div>
