@@ -23,8 +23,8 @@ const SearchScreen = ({ history }) => {
     <div className='container-fluid mt-2'>
       <h2>Search screen</h2>
       <hr />
-      <div className='row container'>
-        <div className='col-lg-7 col-md-7'>
+      <div className='row container-fluid py-3'>
+        <div className='col-lg-6 col-md-6'>
           <form
             className='row row-cols-lg-auto g-3 align-items-center'
             onSubmit={handleSubmit}
@@ -46,7 +46,7 @@ const SearchScreen = ({ history }) => {
           </form>
         </div>
 
-        <div className='col-lg-5 col-md-5'>
+        <div className='col-lg-6 col-md-6 d-flex justify-content-between'>
           {heroesFiltered ? (
             heroesFiltered.map((hero) => <HeroCard key={hero.id} {...hero} />)
           ) : (
