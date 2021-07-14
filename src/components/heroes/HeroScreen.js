@@ -15,7 +15,7 @@ const HeroScreen = ({ history }) => {
     hero;
 
   const handleReturn = () => {
-    if (history.length >= 2) {
+    if (history.length <= 2) {
       if (publisher === 'DC Comics') {
         history.push('/dc');
       } else history.push('/marvel');
