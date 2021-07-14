@@ -1,24 +1,29 @@
-import React, { useState } from 'react';
-import { heroes } from '../../data/heroes';
+import React, { useMemo, useState } from 'react';
 import HeroCard from '../heroes/HeroCard';
 import { BsFillExclamationCircleFill } from 'react-icons/bs';
+import queryString from 'query-string';
+import { useLocation } from 'react-router-dom';
+import getHeroesByName from '../../selectors/getHeroesByName';
 
-const SearchScreen = () => {
+const SearchScreen = ({ history }) => {
   const [value, setValue] = useState('');
-  const [heroFiltered, setHeroFiltered] = useState();
+  const location = useLocation();
+  const { q = '' } = queryString.parse(location.search);
+  console.log(q);
+
+  const heroesFiltered = useMemo(() => getHeroesByName(q), [q]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const filtered = heroes.filter((hero) => hero.superhero === value);
-    setHeroFiltered(filtered);
-    setValue('');
+    history.push(`?q=${value}`);
+    //setValue('');
   };
 
   return (
     <div className='container-fluid mt-2'>
       <h2>Search screen</h2>
       <hr />
-      <div className='row'>
+      <div className='row container'>
         <div className='col-lg-7 col-md-7'>
           <form
             className='row row-cols-lg-auto g-3 align-items-center'
@@ -29,6 +34,7 @@ const SearchScreen = () => {
                 type='text'
                 className='form-control'
                 placeholder='Search your hero'
+                autoComplete='off'
                 onChange={(e) => setValue(e.target.value)}
               />
             </div>
@@ -41,8 +47,8 @@ const SearchScreen = () => {
         </div>
 
         <div className='col-lg-5 col-md-5'>
-          {heroFiltered ? (
-            heroFiltered.map((hero) => <HeroCard key={hero.id} {...hero} />)
+          {heroesFiltered ? (
+            heroesFiltered.map((hero) => <HeroCard key={hero.id} {...hero} />)
           ) : (
             // <p>{heroFiltered.superhero}</p>
             <div className='alert alert-warning' role='alert'>
