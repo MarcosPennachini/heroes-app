@@ -1,9 +1,19 @@
 import React, { useContext } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useHistory } from 'react-router-dom';
+import { AUTH_LOGOUT } from '../../actions/action-types';
 import { AuthContext } from '../../auth/AuthContext';
 
 export const Navbar = () => {
-  // const { user } = useContext(AuthContext);
+  const { user, dispatch } = useContext(AuthContext);
+  const history = useHistory();
+
+  const handleLogout = () => {
+    dispatch({
+      type: AUTH_LOGOUT,
+    });
+
+    history.replace('/login');
+  };
 
   return (
     <nav className='navbar navbar-expand-sm navbar-dark bg-dark container-fluid'>
@@ -43,20 +53,15 @@ export const Navbar = () => {
 
       <div className='navbar-collapse collapse w-100 order-3 dual-collapse2 justify-content-end'>
         <ul className='navbar-nav'>
-          <AuthContext.Consumer>
+          {/* <AuthContext.Consumer>
             {({ user }) => (
               <span className='nav-item nav-link text-info'>{user.name}</span>
             )}
-          </AuthContext.Consumer>
-          {/* <span className='nav-item nav-link'> {user.name} </span> */}
-          <NavLink
-            activeClassName='active'
-            className='nav-item nav-link'
-            exact
-            to='/login'
-          >
+          </AuthContext.Consumer> */}
+          <span className='nav-item nav-link text-info'> {user.name} </span>
+          <button className='nav-item nav-link btn' onClick={handleLogout}>
             Logout
-          </NavLink>
+          </button>
         </ul>
       </div>
     </nav>
