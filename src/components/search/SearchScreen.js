@@ -46,16 +46,33 @@ const SearchScreen = ({ history }) => {
           </form>
         </div>
 
-        <div className='col-lg-6 col-md-6 d-flex justify-content-between'>
-          {heroesFiltered ? (
-            heroesFiltered.map((hero) => <HeroCard key={hero.id} {...hero} />)
-          ) : (
-            // <p>{heroFiltered.superhero}</p>
+        <div className='col-lg-6 col-md-6'>
+          {q === '' && (
             <div className='alert alert-warning' role='alert'>
               <BsFillExclamationCircleFill />
               <span> Busca algún héroe </span>
             </div>
           )}
+
+          {q !== '' && heroesFiltered.length === 0 && (
+            <div className='alert alert-warning' role='alert'>
+              <BsFillExclamationCircleFill />
+              <span> Busca un nombre válido </span>
+            </div>
+          )}
+
+          {heroesFiltered.map((hero) => (
+            <HeroCard key={hero.id} {...hero} />
+          ))}
+
+          {/* {q != '' && heroesFiltered.length === 0 ? (
+            <div className='alert alert-warning' role='alert'>
+              <BsFillExclamationCircleFill />
+              <span> Busca un nombre válido </span>
+            </div>
+          ) : (
+            heroesFiltered.map((hero) => <HeroCard key={hero.id} {...hero} />)
+          )} */}
         </div>
       </div>
     </div>
