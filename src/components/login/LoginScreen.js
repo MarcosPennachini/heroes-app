@@ -5,6 +5,7 @@ import { AuthContext } from '../../auth/AuthContext';
 const LoginScreen = ({ history }) => {
   const userDemo = 'Marcos';
   const { dispatch } = useContext(AuthContext);
+  const lastPath = JSON.parse(localStorage.getItem('lastPath')) || '/';
 
   const handleClick = () => {
     dispatch({
@@ -14,7 +15,7 @@ const LoginScreen = ({ history }) => {
       },
     });
 
-    history.replace('/');
+    history.replace(lastPath);
   };
 
   return (
