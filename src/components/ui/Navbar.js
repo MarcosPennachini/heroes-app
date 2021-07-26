@@ -20,8 +20,19 @@ export const Navbar = () => {
       <Link className='navbar-brand' to='/'>
         Asociaciones
       </Link>
+      <button
+        className='navbar-toggler'
+        type='button'
+        data-bs-toggle='collapse'
+        data-bs-target='#navbarSupportedContent'
+        aria-controls='navbarSupportedContent'
+        aria-expanded='false'
+        aria-label='Toggle navigation'
+      >
+        <span className='navbar-toggler-icon'></span>
+      </button>
 
-      <div className='navbar-collapse'>
+      <div className='collapse navbar-collapse' id='navbarSupportedContent'>
         <div className='navbar-nav'>
           <NavLink
             activeClassName='active'
@@ -49,20 +60,14 @@ export const Navbar = () => {
             Search
           </NavLink>
         </div>
-      </div>
-
-      <div className='navbar-collapse collapse w-100 order-3 dual-collapse2 justify-content-end'>
-        <ul className='navbar-nav'>
-          {/* <AuthContext.Consumer>
-            {({ user }) => (
-              <span className='nav-item nav-link text-info'>{user.name}</span>
-            )}
-          </AuthContext.Consumer> */}
-          <span className='nav-item nav-link text-info'> {user.name} </span>
-          <button className='nav-item nav-link btn' onClick={handleLogout}>
-            Logout
-          </button>
-        </ul>
+        <div className='navbar-nav w-100 order-3 dual-collapse2 justify-content-end'>
+          <ul className='navbar-nav'>
+            <span className='nav-item nav-link text-info'> {user.name} </span>
+            <button className='nav-item nav-link btn' onClick={handleLogout}>
+              Logout
+            </button>
+          </ul>
+        </div>
       </div>
     </nav>
   );
