@@ -15,7 +15,7 @@ const LoginScreen = ({ history }) => {
       },
     });
 
-    history.replace('/');
+    history.replace(lastPath);
   };
 
   return (
