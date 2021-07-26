@@ -20,7 +20,6 @@ const AppRouter = () => {
             component={LoginScreen}
           />
           <PrivateRoute
-            exact
             path='/'
             isAuthenticated={user.logged}
             component={DashboardRouter}

@@ -6,6 +6,7 @@ const LoginScreen = ({ history }) => {
   const userDemo = 'Marcos';
   const { dispatch } = useContext(AuthContext);
   const lastPath = JSON.parse(localStorage.getItem('lastPath')) || '/';
+  console.log(lastPath);
 
   const handleClick = () => {
     dispatch({
