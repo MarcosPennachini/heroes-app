@@ -3,7 +3,7 @@ import { Redirect, useParams } from 'react-router-dom';
 import getHeroesById from '../../selectors/getHeroesById';
 import { BiArrowBack } from 'react-icons/bi';
 
-const heroesImgs = require.context('../../assets/heroes', false);
+const heroesImgs = require.context('../../assets/heroes', true);
 
 const HeroScreen = ({ history }) => {
   const { heroId } = useParams();
