@@ -3,6 +3,8 @@ import { Redirect, useParams } from 'react-router-dom';
 import getHeroesById from '../../selectors/getHeroesById';
 import { BiArrowBack } from 'react-icons/bi';
 
+const heroesImgs = require.context('../../assets/heroes', false);
+
 const HeroScreen = ({ history }) => {
   const { heroId } = useParams();
 
@@ -27,7 +29,8 @@ const HeroScreen = ({ history }) => {
       <div className='row py-3'>
         <div className='col-lg-4 col-md-4 col-sm-12'>
           <img
-            src={`../assets/heroes/${hero.id}.jpg`}
+            //src={`../assets/heroes/${hero.id}.jpg`}
+            src={heroesImgs(`./${hero.id}.jpg`).default}
             alt='superhero'
             className='img-thumbnail animate__animated animate__fadeIn'
           />

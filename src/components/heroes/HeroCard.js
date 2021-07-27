@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+const heroImg = require.context('../../assets/heroes', true);
+
 const HeroCard = ({
   id,
   superhero,
@@ -15,7 +17,8 @@ const HeroCard = ({
       style={{ maxWidth: '200px', padding: '0px' }}
     >
       <img
-        src={`./assets/heroes/${id}.jpg`}
+        //src={`./assets/heroes/${id}.jpg`}
+        src={heroImg(`./${id}.jpg`).default}
         className='card-img-top'
         alt='hero'
       />
